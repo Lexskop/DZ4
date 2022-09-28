@@ -5,18 +5,16 @@
 9012 -> 12
 */
 
-double calc (int number)
+double calc (int number, int count, double sum)
 {
-    double sum = 1;
-    int count = 0;
     number = Math.Abs(number);
     if(number != 0)
         {
         count = (int)Math.Log10(number) + 1;
         }
-    for (int i = 0; i <= count; i++)
+    for (int index = 0; index <= count; index++)
     {
-        sum = Math.Floor((number % Math.Pow(10, i + 1)) - Math.Floor((number % Math.Pow(10, i)))) / Math.Pow(10, i-1);
+        sum = sum + (Math.Floor((number % Math.Pow(10, index + 1)) - (number % Math.Pow(10, index))) / Math.Pow(10, index));
     }
     return sum;
 }
@@ -29,7 +27,7 @@ while (userChoice.ToLower() == "y")
     Console.WriteLine("Введите число");
     int userNumber = Convert.ToInt32(Console.ReadLine());
 
-    double result = calc(userNumber);
+    double result = calc(userNumber, 0, 0);
     Console.WriteLine($"Сумма цифр в числе {userNumber} -> {result}");
 
     Console.WriteLine("Вы хотите продолжить работу с программой? Да - Y, Нет - N");

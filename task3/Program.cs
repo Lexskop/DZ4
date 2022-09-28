@@ -5,8 +5,19 @@
 */
 int randomNum(int min, int max)
 {
-    int num = new Random().Next(min, max + 1);
+    int num = new Random().Next(min, max);
     return num;
+}
+
+void PrintArray(int[] collection)
+{
+    Console.Write($"Ваша длина массива {collection.Length} -> [");
+    for (int index = 0; index < collection.Length-1; index++)
+    {
+        Console.Write($"{collection[index]},");
+    }
+    Console.Write($"{collection[collection.Length-1]}");
+    Console.WriteLine("]");
 }
 
 Console.Clear();
@@ -17,17 +28,6 @@ while (userChoice.ToLower() == "y")
     Console.WriteLine("Введите длину массива:");
     int userLength = Convert.ToInt32(Console.ReadLine());
    
-    void PrintArray(int[] collection)
-    {
-    Console.Write($"Ваша длинна массива {userLength} -> [");
-    for (int index = 0; index < collection.Length-1; index++)
-    {
-        Console.Write($"{collection[index]},");
-    }
-    Console.Write($"{collection[collection.Length-1]}");
-    Console.WriteLine("]");
-    }
-    
     int[] arr = new int[userLength];
     for (int i = 0; i < userLength; i++)
     {
@@ -35,7 +35,7 @@ while (userChoice.ToLower() == "y")
     }
     PrintArray(arr);
 
-Console.WriteLine("Вы хотите продолжить работу с программой? Да - Y, Нет - N");
+    Console.WriteLine("Вы хотите продолжить работу с программой? Да - Y, Нет - N");
     userChoice = Console.ReadLine();
     while (userChoice.ToLower() != "y" && userChoice.ToLower() != "n")
     {
